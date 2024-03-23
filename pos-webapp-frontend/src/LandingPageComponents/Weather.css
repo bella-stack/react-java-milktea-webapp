@@ -1,0 +1,16 @@
+.weather-container {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.big-temperature {
+    font-size: 4rem;
+}
+
+.temperature-details {
+    margin-top: 10px;
+    text-align: center;
+}

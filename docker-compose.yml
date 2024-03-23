@@ -1,0 +1,15 @@
+services:
+  web-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8080:8080"
+  web-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3000:80"
+    environment:
+      REACT_APP_BACKEND_URL: "http://web-backend:8080"

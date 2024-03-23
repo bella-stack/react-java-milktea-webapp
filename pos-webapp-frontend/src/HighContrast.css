@@ -1,0 +1,39 @@
+.high-contrast {
+    background-color: black;
+    color: white;
+}
+.CENTERTEXT {
+    text-align: center;
+}
+.high-contrast {
+    & .LINK {
+        text-decoration: underline;
+        color: yellow;
+    }
+    & .LINK:hover {
+        color: white;
+    }
+    & .TIGERSUGAR {
+        color: yellow;
+    }
+    & .BLACKBG {
+        background-color: black;
+    }
+}
+.high-contrast input, .high-contrast option, .high-contrast select {
+    color: black;
+}
+.high-contrast label, .high-contrast h3 {
+    color: white;
+}
+.high-contrast button {
+    border-width: 2px;
+    border-color: yellow;
+    color: yellow;
+    background-color: black;
+}
+.high-contrast button:hover {
+    box-shadow: 0 0 15px rgba(255, 255, 255);
+    background-color: yellow;
+    color: black;
+}

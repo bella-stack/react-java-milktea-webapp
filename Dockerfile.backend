@@ -1,0 +1,18 @@
+FROM maven:3.6-jdk-8 as builder
+
+WORKDIR /usr/src/app
+
+COPY ./pos-webapp/pom.xml ./
+RUN mvn dependency:go-offline -B
+
+COPY ./pos-webapp/src ./src
+
+RUN mvn package -DskipTests
+
+FROM openjdk:11
+
+WORKDIR /app
+
+COPY --from=builder /usr/src/app/target/pos-webapp-1.0-SNAPSHOT.jar /app/
+CMD ["java", "-jar", "pos-webapp-1.0-SNAPSHOT.jar"]
+EXPOSE 8080
