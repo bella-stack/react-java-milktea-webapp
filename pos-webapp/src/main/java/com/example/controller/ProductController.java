@@ -10,7 +10,6 @@ import java.util.Comparator;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.*;
 
 /**
  * ProductController for product data.
@@ -42,13 +41,6 @@ public class ProductController {
     @GetMapping
     public List<Product> getAllProductItems() {
         List<Product> items = productRepository.findAll();
-        // List<Product> finalItems = new ArrayList<>();
-        // for (Product prod : items) {
-        //     List<?> inventoryList = 
-            
-
-        // }
-
         items.sort(Comparator.comparingInt(item -> Integer.parseInt(item.getId().substring(2))));
         return items;
     }

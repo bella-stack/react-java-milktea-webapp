@@ -53,7 +53,7 @@ class InventoryControllerTest {
 
     @Test
     void testRestockInventoryItem_ExceedsMaxStock_ShouldReturnBadRequest() throws Exception {
-        // Given return 400
+        // Given
         int restockAmount = 60000; // This will bring the total to 259999, which is over the limit
         when(inventoryRepository.findById(testInventory.getId())).thenReturn(Optional.of(testInventory));
 

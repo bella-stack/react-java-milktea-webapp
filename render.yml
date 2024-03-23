@@ -1,3 +1,18 @@
+# services:
+#   - type: web
+#     name: project-web-frontend
+#     env: docker
+#     build:
+#       dockerfile: ./Dockerfile.frontend
+#     envVars:
+#       - key: REACT_APP_BACKEND_URL
+#         value: https://project-web-backend.onrender.com
+
+#   - type: web
+#     name: project-web-backend
+#     env: docker
+#     build:
+#       dockerfile: ./Dockerfile.backend
 services:
   - type: web
     name: project-web-frontend

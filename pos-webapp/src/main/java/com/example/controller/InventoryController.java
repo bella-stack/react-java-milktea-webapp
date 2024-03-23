@@ -146,27 +146,23 @@ public class InventoryController {
         List<Inventory> restockItems = inventoryRepository.findByQuantityLessThan(5000);
         return ResponseEntity.ok(restockItems);
     }
-    // /**
-    //  * Determine whether there is avaiable space for the restock order place.
-    //  *
-    //  * @return A list of inventory items that need restocking.
-    //  */
-    // @PatchMapping("/restock/{id}")
-    // public ResponseEntity<?> restockInventoryItem(@PathVariable String id, @RequestBody int restockAmount) {
-    //     // System.out.println("=============");
-    //     // System.out.println("=======restockAmount======" + restockAmount);
-    //     return inventoryRepository.findById(id)
-    //             .map(inventory -> {
-    //                 if (inventory.getQuantity() + restockAmount <= 250000) {
-    //                     inventory.setQuantity(inventory.getQuantity() + restockAmount);
-    //                     return ResponseEntity.ok(inventoryRepository.save(inventory));
-    //                 } else {
-    //                     // If the restock would exceed the maximum stock, return a BAD_REQUEST response with a message
-    //                     return ResponseEntity
-    //                             .badRequest()
-    //                             .body("Restocking amount exceeds maximum stock limit.");
-    //                 }
-    //             })
-    //             .orElseGet(() -> ResponseEntity.notFound().build());
-    // }
+
+    @PatchMapping("/restock/{id}")
+    public ResponseEntity<?> restockInventoryItem(@PathVariable String id, @RequestBody int restockAmount) {
+        // System.out.println("=============");
+        // System.out.println("=======restockAmount======" + restockAmount);
+        return inventoryRepository.findById(id)
+                .map(inventory -> {
+                    if (inventory.getQuantity() + restockAmount <= 250000) {
+                        inventory.setQuantity(inventory.getQuantity() + restockAmount);
+                        return ResponseEntity.ok(inventoryRepository.save(inventory));
+                    } else {
+                        // If the restock would exceed the maximum stock, return a BAD_REQUEST response with a message
+                        return ResponseEntity
+                                .badRequest()
+                                .body("Restocking amount exceeds maximum stock limit.");
+                    }
+                })
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
 }

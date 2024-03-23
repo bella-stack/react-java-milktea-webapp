@@ -57,7 +57,7 @@ public class OrderHistoryController {
      * @param orderhistory The order history item to be created.
      * @return ResponseEntity with the created order item and HTTP status code.
      */
-    // Method to create a new order history item ---new order 
+    // Method to create a new order history item
     @PostMapping
     public ResponseEntity<OrderHistory> addOrderHistory(@RequestBody OrderHistory orderhistory) {
         OrderHistory savedOrderHistory = orderhistoryRepository.save(orderhistory);
